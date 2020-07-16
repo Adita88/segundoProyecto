@@ -17,6 +17,9 @@ public class Fibonacci extends trianguloPascal{
     private Fibonacci() {
     }
 
+    /**
+     * Método inica con dibujarTriángulo
+     */
     public static void dibujarTriangulo() {
         
         
@@ -28,6 +31,10 @@ public class Fibonacci extends trianguloPascal{
             }
     }
     
+    /**
+     * Método que genera a fibronacci
+     * @return 
+     */
     private static int[] generarFibonacci(){
         int[] retorno= new int[DIMENSION_MAXIMA_MATRIZ];
         for(int i=0; i<Fibonacci.DIMENSION_MAXIMA_MATRIZ;i++)
@@ -37,6 +44,10 @@ public class Fibonacci extends trianguloPascal{
         return retorno;
     }
 
+    /**
+     * Método que obtiene valores tirados por ahí
+     * @return 
+     */
     public static int[] getValores() {
         return valores;
     }

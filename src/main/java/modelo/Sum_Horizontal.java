@@ -16,6 +16,9 @@ public class Sum_Horizontal extends trianguloPascal{
     private Sum_Horizontal() {
     }
 
+    /**
+     * Método que dibuja el triángulo
+     */
     public static void dibujarTriangulo() {
         
         
@@ -26,6 +29,10 @@ public class Sum_Horizontal extends trianguloPascal{
                 color[i][j]=ColoresRGB.getColorRGB(i);
     }
     
+    /**
+     * Método que realiza la suma Horizontal
+     * @return 
+     */
     private static int[] sumaHorizontal(){
         int[] array=new int[DIMENSION_MAXIMA_MATRIZ];
         for(int i=0; i<Sum_Horizontal.DIMENSION_MAXIMA_MATRIZ;i++){

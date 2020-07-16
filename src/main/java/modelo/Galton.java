@@ -9,11 +9,16 @@ package modelo;
  *
  * @author David B
  */
+
 public class Galton extends trianguloPascal{
 
     public Galton() {
     }
     
+    
+    /**
+     * Método que dibuja el triangulo
+     */
     public static void dibujarTriangulo() {
         trianguloPascal.pascalEstadoInicial();
     }

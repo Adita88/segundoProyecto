@@ -14,7 +14,9 @@ public class Par_Impar extends trianguloPascal{
     private Par_Impar() {
     }
 
-    
+    /**
+     * Método que dibuja el triángulo
+     */
     public static  void dibujarTriangulo() {
         
         
