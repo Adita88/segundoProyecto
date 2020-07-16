@@ -80,6 +80,10 @@ public class ControladorTriangulos {
     public void quitarColores(){
         trianguloPascal.pascalEstadoInicial();
     }
+    
+    public int getMaximoFilas(){
+        return trianguloPascal.getDIMENSION_MAXIMA_MATRIZ();
+    }
 
     public void generarSimulacion(int cantBolas, int probIzquierda, boolean velocidad, int cantidadFilas){
         controladorBolas.generarSimulacion( cantBolas,  probIzquierda,  velocidad,  cantidadFilas);

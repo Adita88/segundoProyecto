@@ -44,16 +44,16 @@ public class Interfaz1 extends javax.swing.JFrame {
         
     }
     
-    private JLabel[][] generarMatrizLabels(Icon ... image){
+    private JLabel[][] generarMatrizLabels(boolean ... conIcono){
         
-        Icon icono = image.length > 0 ? image[0] : null;
-        //if(icono==null) throw new RuntimeException();
+        boolean icono = conIcono.length > 0 ? conIcono[0] : false;
+        
         
         JLabel[][] matrizLabels= new JLabel[controladorTringulos.getCantidadFilas()][controladorTringulos.getCantidadFilas()];
         
         int[][] valores= controladorTringulos.getValores();
         
-        if(icono==null)
+        if(!icono)
             for(int fila=0; fila<controladorTringulos.getCantidadFilas(); fila++)
                 for(int columna=0; columna<controladorTringulos.getCantidadFilas() && columna<=fila; columna++)
                     matrizLabels[fila][columna]= new JLabel(""+valores[fila][columna]);
@@ -61,7 +61,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         else
             for(int fila=0; fila<controladorTringulos.getCantidadFilas(); fila++)
                 for(int columna=0; columna<controladorTringulos.getCantidadFilas() && columna<=fila; columna++)
-                    matrizLabels[fila][columna]= new JLabel(icono);
+                    matrizLabels[fila][columna]= new JLabel("⚫");
 
         return matrizLabels;
     }
@@ -75,7 +75,74 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
     
     private void dibujarGalton(){
+        panelPrincipal.removeAll();
+        JLabel[][] labels= generarMatrizLabels(true);
+        
+        ColoresRGB[][] colores= controladorTringulos.getColores();
+        
+        for(int fila=0; fila<controladorTringulos.getCantidadFilas(); fila++){
+            int posicionX = ((panelPrincipal.getWidth()/2)-((tamEstandarEtiqueta.width/2)*fila));
+            for(int columna=0; columna<controladorTringulos.getCantidadFilas() && columna<=fila; columna++){
                 
+                JLabel labelActual=labels[fila][columna];
+                
+                int posicionXactual=posicionX+tamEstandarEtiqueta.width*columna;
+                int posicionY= 40+(tamEstandarEtiqueta.height*fila);
+                labelActual.setBounds(posicionXactual, posicionY, tamEstandarEtiqueta.width, tamEstandarEtiqueta.height);
+                //labelActual.setOpaque(true);
+                
+                ColoresRGB color= colores[fila][columna];
+                
+                labelActual.setForeground(Color.WHITE);
+                
+                labelActual.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+                
+                labelActual.setBackground(new Color(ColoresRGB.getCodigoColor(color)[0],
+                        ColoresRGB.getCodigoColor(color)[1], ColoresRGB.getCodigoColor(color)[2]));
+                panelPrincipal.add(labels[fila][columna]);
+            }
+        }
+        
+        dibujarBuckets();
+
+        panelPrincipal.validate();
+        panelPrincipal.repaint();
+        
+        
+        
+    }
+    
+    private JLabel[] generarBucketsLabels(){
+        JLabel[] vectorLabels= new JLabel[controladorTringulos.getCantidadFilas()+1];        
+        for(int i=0; i<controladorTringulos.getCantidadFilas()+1; i++)
+            vectorLabels[i]= new JLabel("0");
+        return vectorLabels;
+    }
+    
+    private void dibujarBuckets(){
+        
+        JLabel[] bucketsLabels=generarBucketsLabels();
+        
+        int fila= controladorTringulos.getCantidadFilas();
+        int posicionX = ((panelPrincipal.getWidth()/2)-((tamEstandarEtiqueta.width/2)*(fila)));
+        int posicionY= (controladorTringulos.getMaximoFilas()+2)*tamEstandarEtiqueta.height;
+        
+        for(int columna=0; columna<controladorTringulos.getCantidadFilas()+1; columna++){
+            int posicionXactual=posicionX+tamEstandarEtiqueta.width*columna;
+            JLabel labelActual= bucketsLabels[columna];
+            labelActual.setBounds(posicionXactual, posicionY, tamEstandarEtiqueta.width, tamEstandarEtiqueta.height);
+            labelActual.setOpaque(true);
+            
+            ColoresRGB color= ColoresRGB.getColorRGB(columna);
+            labelActual.setForeground(Color.WHITE);
+            labelActual.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+            
+            labelActual.setBackground(new Color(ColoresRGB.getCodigoColor(color)[0],
+            ColoresRGB.getCodigoColor(color)[1], ColoresRGB.getCodigoColor(color)[2]));
+            panelPrincipal.add(bucketsLabels[columna]);
+        }
+        panelPrincipal.validate();
+        panelPrincipal.repaint();
     }
     
     private void dibujarPascal(){
@@ -133,7 +200,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         
         int[] vector = botonSumasHorizontales.isSelected() ? vector=controladorTringulos.getVectorSumaHorizontal() : controladorTringulos.getVectorFibonacci();
             
-        JLabel[] vectorLabels=generarVectorLabels(vector);
+        JLabel[] vectorLabels= generarVectorLabels(vector);
         
         for(int fila=0; fila<controladorTringulos.getCantidadFilas(); fila++){
             JLabel labelActual= vectorLabels[fila];
@@ -214,7 +281,7 @@ public class Interfaz1 extends javax.swing.JFrame {
             JSlider barra = (JSlider) e.getSource();
             controladorTringulos.setCantidadFilas(barra.getValue());
             textContadorCantidadFilas.setText(""+barra.getValue());
-            dibujarPascal();
+            dibujar();
         }
     }
     
@@ -226,7 +293,7 @@ public class Interfaz1 extends javax.swing.JFrame {
             probIzq=(50+diferencia);
             probDer=(50-diferencia);
             textContadorProbabilidad.setText(probIzq+"/"+probDer);
-            System.out.println(barra.getValue());
+            //System.out.println(barra.getValue());
         }
     }
     
@@ -634,7 +701,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     }//GEN-LAST:event_botonEquiprobable_GaltonActionPerformed
 
     private void botonAplicar_GaltonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicar_GaltonActionPerformed
-        dibujarPascal();
+        dibujar();
     }//GEN-LAST:event_botonAplicar_GaltonActionPerformed
 
     /**
