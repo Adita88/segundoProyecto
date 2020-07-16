@@ -14,6 +14,9 @@ public class Simetria extends trianguloPascal{
     private Simetria() {
     }
 
+    /**
+     * Método que dibuja el triángulo
+     */
     public static void dibujarTriangulo() {
         
         

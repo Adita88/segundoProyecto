@@ -17,7 +17,11 @@ public enum ColoresRGB {
     color12, color13, color14,
     color15,color16, colorBase;
     
-    
+    /**
+     * Método que indica el color
+     * @param numero variable que indica e número a utilizar
+     * @return 
+     */
     public static ColoresRGB getColorRGB(int numero){
         switch(numero){
             case -1: return colorBase;
@@ -42,6 +46,11 @@ public enum ColoresRGB {
         return null;
     }
     
+    /**
+     * Método para obtener código de color
+     * @param color indica el color que se va a utilizar
+     * @return 
+     */
     public static int[] getCodigoColor(ColoresRGB color){
         switch(color){
             case colorBase: return new int[]{43, 45, 66};
@@ -67,6 +76,11 @@ public enum ColoresRGB {
         return null;
     }
     
+    /**
+     * Método que recibe el código de color
+     * @param numero variable que indica el color
+     * @return 
+     */
     public static int[] getCodigoColor(int numero){
         switch(numero){
             case -1: return new int[]{43, 45, 66};

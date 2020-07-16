@@ -14,7 +14,9 @@ public class Diagonales extends trianguloPascal {
     private Diagonales() {
     }
 
-    
+    /**
+     * Método dibujarTriangulo que dibuja n 
+     */
     public static void dibujarTriangulo(){
         
         

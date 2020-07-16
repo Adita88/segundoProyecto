@@ -44,6 +44,11 @@ public class Interfaz1 extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Método genera matriz de Labels
+     * @param image variable
+     * @return 
+     */
     private JLabel[][] generarMatrizLabels(boolean ... conIcono){
         
         boolean icono = conIcono.length > 0 ? conIcono[0] : false;
@@ -66,13 +71,16 @@ public class Interfaz1 extends javax.swing.JFrame {
         return matrizLabels;
     }
     
-    
+    /**
+     * Método dibujar
+     */
     private void dibujar(){
         if(!botonGalton.isSelected())
             dibujarPascal();
         else
             dibujarGalton();
     }
+    
     
     private void dibujarGalton(){
         panelPrincipal.removeAll();
@@ -112,6 +120,8 @@ public class Interfaz1 extends javax.swing.JFrame {
         
     }
     
+    
+    
     private JLabel[] generarBucketsLabels(){
         JLabel[] vectorLabels= new JLabel[controladorTringulos.getCantidadFilas()+1];        
         for(int i=0; i<controladorTringulos.getCantidadFilas()+1; i++)
@@ -145,6 +155,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         panelPrincipal.repaint();
     }
     
+    /**
+     * Método dibujar Pascal
+     */
     private void dibujarPascal(){
         panelPrincipal.removeAll();
         
@@ -183,6 +196,11 @@ public class Interfaz1 extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Método para generar labels los vectores
+     * @param valoresVector variable
+     * @return 
+     */
     private JLabel[] generarVectorLabels(int[] valoresVector){
         JLabel[] vectorLabels= new JLabel[controladorTringulos.getCantidadFilas()];        
         for(int i=0; i<controladorTringulos.getCantidadFilas(); i++)
@@ -190,6 +208,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         return vectorLabels;
     }
     
+    /**
+     * Dibujar vector
+     */
     private void dibujarVector(){
         if(!botonSumasHorizontales.isSelected() && !botonFibonacci.isSelected()) return;
         
@@ -223,7 +244,9 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
     
     
-
+/**
+ * Mpetodo inicializar lista de Galton
+ */
     private void inicializarListaOpcionesGalton(){
         listaOpcionesGalton= new ArrayList<>();
         listaOpcionesGalton.add(text_separacionEspacios_Galton);
@@ -239,6 +262,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         listaOpcionesGalton.add(textContadorProbabilidad);
     }
     
+    /**
+     * Método que al presionar el botón realice la accióm
+     */
     private class  alPresionarToggleButton implements ActionListener{
 
         @Override
@@ -259,6 +285,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         } 
     }
     
+    /**
+     * Método para ToggleButton
+     * @param boton objeto 
+     */
     private void casosToggleButton(JToggleButton boton){
         if(!boton.getModel().isSelected()){
                 textTituloVentana.setText("Triangulo de Pascal");
@@ -275,6 +305,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Método al presionar Slider Filas
+     */
     private class  alPresionarSliderFilas implements ChangeListener{
         @Override
         public void stateChanged(ChangeEvent e) {
@@ -284,7 +317,9 @@ public class Interfaz1 extends javax.swing.JFrame {
             dibujar();
         }
     }
-    
+        /**
+         * Método que oye al presionar slider probabilidad
+         */
         private class  alPresionarSliderProbabilidad implements ChangeListener{
         @Override
         public void stateChanged(ChangeEvent e) {
@@ -297,6 +332,10 @@ public class Interfaz1 extends javax.swing.JFrame {
         }
     }
     
+        /**
+         * Método que da visibilidad a las opciones de Galton
+         * @param encendido 
+         */
     private void visibilidadOpcionesGalton(boolean encendido){
         listaOpcionesGalton.forEach((Component _item) -> {
             _item.setVisible(encendido);

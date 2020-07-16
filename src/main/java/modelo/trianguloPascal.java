@@ -19,6 +19,10 @@ public class trianguloPascal {
         inicilizarConCombinatoria();
     }
     
+    /**
+     * Método define la cantidad de filas que se deben mostrar
+     * @param cantFilasMostrables valor que indica la cantidad de fila que se van a mostrar
+     */
     public trianguloPascal(int cantFilasMostrables) {
         trianguloPascal.color= new ColoresRGB[DIMENSION_MAXIMA_MATRIZ][DIMENSION_MAXIMA_MATRIZ];
         if(cantFilasMostrables<=0 || cantFilasMostrables>DIMENSION_MAXIMA_MATRIZ) {
@@ -30,6 +34,10 @@ public class trianguloPascal {
         inicilizarConCombinatoria();
     }
     
+    /**
+     * Método para iniciar
+     * @return 
+     */
     private static int[][] inicilizarConCombinatoria(){
         int array[][]= new int[DIMENSION_MAXIMA_MATRIZ][DIMENSION_MAXIMA_MATRIZ];
         for(int fila=0; fila<DIMENSION_MAXIMA_MATRIZ; fila++){
@@ -40,12 +48,20 @@ public class trianguloPascal {
         return array;
     }
     
+    /**
+     * Método establece a Pascal como estado inicial
+     */
     public static void pascalEstadoInicial(){
         for(int fila=0; fila<DIMENSION_MAXIMA_MATRIZ; fila++)
             for(int columna=0; columna<DIMENSION_MAXIMA_MATRIZ; columna++)
                 trianguloPascal.color[fila][columna]=ColoresRGB.colorBase;
     }
     
+    /**
+     * Método con formula factorial
+     * @param num Valor a conseguir el factorial
+     * @return 
+     */
     private static int factorial(int num){
         if(num == 0){
             return 1;
@@ -54,6 +70,9 @@ public class trianguloPascal {
             return num * factorial(num-1);
     }
     
+    /**
+     * Método dibuja el triángulo
+     */
     public static void dibujarTriangulo() {
         
         
@@ -62,7 +81,10 @@ public class trianguloPascal {
                 trianguloPascal.color[fila][columna]=ColoresRGB.colorBase;
     }
     
-    
+    /**
+     * Método get Pascal_Matriz
+     * @return 
+     */
     public int[][] getPASCAL_MATRIZ() {
         return PASCAL_MATRIZ;
     }
@@ -71,6 +93,11 @@ public class trianguloPascal {
         return cantFilasMostrables;
     }
 
+    /**
+     * Método que establece el rango de filas
+     * @param cantFilasMostrables cantidad de filas
+     * @throws RuntimeException 
+     */
     public void setCantFilasMostrables(int cantFilasMostrables) throws RuntimeException {
         if(cantFilasMostrables<=0 || cantFilasMostrables>DIMENSION_MAXIMA_MATRIZ) throw new RuntimeException();
         trianguloPascal.cantFilasMostrables = cantFilasMostrables;
@@ -84,6 +111,10 @@ public class trianguloPascal {
         return color;
     }
 
+    /**
+     * Método que establece el color 
+     * @param color color a establecer
+     */
     public static void setColor(ColoresRGB[][] color) {
         trianguloPascal.color = color;
     }

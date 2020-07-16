@@ -52,6 +52,10 @@ public class Bola extends Thread{
                 
     }
     
+    /**
+     * Método para mover la bola
+     * @param lado  indica el lado al que se mueve
+     */
     private void moverBola(int lado){ //0 a IZQ y 1 a Der
         numeroBucket+=lado;
         filaActual++;
@@ -63,6 +67,10 @@ public class Bola extends Thread{
                 
     }
     
+    /**
+     * Método que decide un lado
+     * @return 
+     */
     private int decidirLado(){
         if(Math.round(Math.random()*100)<probabilidadIzquierda)
             return 0;
