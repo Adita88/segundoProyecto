@@ -5,9 +5,6 @@
  */
 package modelo;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author David B
@@ -69,7 +66,7 @@ public class Bola extends Thread{
     
     /**
      * Método que decide un lado
-     * @return 
+     * @return int
      */
     private int decidirLado(){
         if(Math.round(Math.random()*100)<probabilidadIzquierda)

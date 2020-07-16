@@ -31,7 +31,7 @@ public class Sum_Horizontal extends trianguloPascal{
     
     /**
      * Método que realiza la suma Horizontal
-     * @return 
+     * @return int []
      */
     private static int[] sumaHorizontal(){
         int[] array=new int[DIMENSION_MAXIMA_MATRIZ];

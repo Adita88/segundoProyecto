@@ -36,7 +36,7 @@ public class trianguloPascal {
     
     /**
      * Método para iniciar
-     * @return 
+     * @return int [][]
      */
     private static int[][] inicilizarConCombinatoria(){
         int array[][]= new int[DIMENSION_MAXIMA_MATRIZ][DIMENSION_MAXIMA_MATRIZ];
@@ -60,7 +60,7 @@ public class trianguloPascal {
     /**
      * Método con formula factorial
      * @param num Valor a conseguir el factorial
-     * @return 
+     * @return int
      */
     private static int factorial(int num){
         if(num == 0){
@@ -83,7 +83,7 @@ public class trianguloPascal {
     
     /**
      * Método get Pascal_Matriz
-     * @return 
+     * @return int [][]
      */
     public int[][] getPASCAL_MATRIZ() {
         return PASCAL_MATRIZ;

@@ -47,7 +47,7 @@ public class Interfaz1 extends javax.swing.JFrame {
     /**
      * Método genera matriz de Labels
      * @param image variable
-     * @return 
+     * @return JLabel[][]
      */
     private JLabel[][] generarMatrizLabels(boolean ... conIcono){
         
@@ -81,7 +81,9 @@ public class Interfaz1 extends javax.swing.JFrame {
             dibujarGalton();
     }
     
-    
+    /**
+     * Método dibujar Galton
+     */
     private void dibujarGalton(){
         panelPrincipal.removeAll();
         JLabel[][] labels= generarMatrizLabels(true);
@@ -121,7 +123,10 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
     
     
-    
+    /**
+     * Meétodo Generar Buckets
+     * @return JLabel[][]
+     */
     private JLabel[] generarBucketsLabels(){
         JLabel[] vectorLabels= new JLabel[controladorTringulos.getCantidadFilas()+1];        
         for(int i=0; i<controladorTringulos.getCantidadFilas()+1; i++)
@@ -129,6 +134,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         return vectorLabels;
     }
     
+    /**
+     * Método dibujar Buckets
+     */
     private void dibujarBuckets(){
         
         JLabel[] bucketsLabels=generarBucketsLabels();

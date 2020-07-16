@@ -20,7 +20,7 @@ public enum ColoresRGB {
     /**
      * Método que indica el color
      * @param numero variable que indica e número a utilizar
-     * @return 
+     * @return ColorRGB
      */
     public static ColoresRGB getColorRGB(int numero){
         switch(numero){
@@ -49,7 +49,7 @@ public enum ColoresRGB {
     /**
      * Método para obtener código de color
      * @param color indica el color que se va a utilizar
-     * @return 
+     * @return int[]
      */
     public static int[] getCodigoColor(ColoresRGB color){
         switch(color){
